@@ -1,0 +1,18 @@
+name: i726-attest
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  id-token: write
+  attestations: write
+jobs:
+  attest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: write marker
+        run: printf 'i726-attested-marker\n' > marker-artifact.txt
+      - name: attest
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-path: marker-artifact.txt
