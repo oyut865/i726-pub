@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: write marker
-        run: printf 'i726-attested-marker\n' > marker-artifact.txt
+        run: echo i726-attested-marker > marker-artifact.txt
       - name: attest
         uses: actions/attest-build-provenance@v1
         with:
